@@ -77,7 +77,8 @@ func TsTransMp4(mp4file *os.File, tsFiles []*os.File) {
 			continue
 		}
 		fmt.Println(demuxer.Input(bytes.NewReader(buf)))
-		muxer.WriteTrailer()
 	}
+
+	muxer.WriteTrailer()
 
 }
