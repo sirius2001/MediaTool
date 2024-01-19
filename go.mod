@@ -2,4 +2,7 @@ module github.com/sirius2001/MediaTool
 
 go 1.21.6
 
-require github.com/yapingcat/gomedia v0.0.0-20240106100545-1b855b02fa0d
+require (
+	github.com/grafov/m3u8 v0.12.0
+	github.com/yapingcat/gomedia v0.0.0-20240106100545-1b855b02fa0d
+)

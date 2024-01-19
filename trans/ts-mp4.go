@@ -7,9 +7,29 @@ import (
 	"log/slog"
 	"os"
 
+	"github.com/sirius2001/MediaTool/pkg"
 	"github.com/yapingcat/gomedia/go-mp4"
 	"github.com/yapingcat/gomedia/go-mpeg2"
 )
+
+func LocalTsM3u8TransMp4(m3u8Path string, mp4file *os.File) {
+	tsPaths, err := pkg.ParaseM3u8(m3u8Path)
+	if err != nil {
+		return
+	}
+	tsFiles := make([]*os.File, 0)
+
+	for _, path := range tsPaths {
+		tsFile, err := os.Open(path)
+		if err != nil {
+			slog.Error("LocalTsM3u8TransMp4 ", "tsFile", path, "open err", err)
+			continue
+		}
+		tsFiles = append(tsFiles, tsFile)
+	}
+
+	TsTransMp4(mp4file, tsFiles)
+}
 
 func TsTransMp4(mp4file *os.File, tsFiles []*os.File) {
 	hasAudio := false

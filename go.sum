@@ -1,2 +1,4 @@
+github.com/grafov/m3u8 v0.12.0 h1:T6iTwTsSEtMcwkayef+FJO8kj+Sglr4Lh81Zj8Ked/4=
+github.com/grafov/m3u8 v0.12.0/go.mod h1:nqzOkfBiZJENr52zTVd/Dcl03yzphIMbJqkXGu+u080=
 github.com/yapingcat/gomedia v0.0.0-20240106100545-1b855b02fa0d h1:dbvo9izqyW38pHtBKU0OYa5s+F8Vk1wlYxZ6qbK3nMY=
 github.com/yapingcat/gomedia v0.0.0-20240106100545-1b855b02fa0d/go.mod h1:WSZ59bidJOO40JSJmLqlkBJrjZCtjbKKkygEMfzY/kc=
