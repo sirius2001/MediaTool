@@ -1,8 +1,8 @@
 package pkg
 
 import (
-	"bytes"
-	"io"
+	"fmt"
+	"log"
 	"log/slog"
 	"os"
 
@@ -17,32 +17,25 @@ func ParaseM3u8(path string) ([]string, error) {
 		return nil, err
 	}
 
-	data, err := io.ReadAll(m3u8File)
+	tsPath := make([]string, 0)
+
+	// 解析 M3U8 文件
+	pl, _, err := m3u8.DecodeFrom(m3u8File, true)
 	if err != nil {
-		slog.Error("ParaseM3u8", "ReadAll err", err)
-		return nil, err
+		log.Fatal(err)
 	}
 
-	p, listType, err := m3u8.Decode(*bytes.NewBuffer(data), true)
-	if err != nil {
-		slog.Error("ParaseM3u8", "m3u8.Decode", err)
-		return nil, err
-	}
-
-	tsArray := make([]string, 0)
-
-	switch listType {
-	case m3u8.MEDIA:
-		mediaPlaylist := p.(*m3u8.MediaPlaylist)
-		for _, segment := range mediaPlaylist.Segments {
-			tsArray = append(tsArray, segment.URI)
+	switch pl := pl.(type) {
+	case *m3u8.MediaPlaylist:
+		for _, segment := range pl.Segments {
+			if segment == nil {
+				break
+			}
+			tsPath = append(tsPath, segment.URI)
 		}
-	case m3u8.MASTER:
-		masterPlaylist := p.(*m3u8.MasterPlaylist)
-
-		for _, variant := range masterPlaylist.Variants {
-			tsArray = append(tsArray, variant.URI)
-		}
+	default:
+		return nil, fmt.Errorf("unexpected playlist type")
 	}
-	return tsArray, nil
+
+	return tsPath, nil
 }
