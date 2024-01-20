@@ -1,4 +1,8 @@
 github.com/grafov/m3u8 v0.12.0 h1:T6iTwTsSEtMcwkayef+FJO8kj+Sglr4Lh81Zj8Ked/4=
 github.com/grafov/m3u8 v0.12.0/go.mod h1:nqzOkfBiZJENr52zTVd/Dcl03yzphIMbJqkXGu+u080=
+github.com/q191201771/lal v0.36.7 h1:ut42yl9RI6lNVTQ8aLdgNVIesMn8StpMKBJIDz9zaQU=
+github.com/q191201771/lal v0.36.7/go.mod h1:SBC5dsMz1QcVeH8ojZOFJ5tD7q0hsY4ORIY5XMWwdog=
+github.com/q191201771/naza v0.30.48 h1:lbYUaa7A15kJKYwOiU4AbFS1Zo8oQwppl2tLEbJTqnw=
+github.com/q191201771/naza v0.30.48/go.mod h1:n+dpJjQSh90PxBwxBNuifOwQttywvSIN5TkWSSYCeBk=
 github.com/yapingcat/gomedia v0.0.0-20240106100545-1b855b02fa0d h1:dbvo9izqyW38pHtBKU0OYa5s+F8Vk1wlYxZ6qbK3nMY=
 github.com/yapingcat/gomedia v0.0.0-20240106100545-1b855b02fa0d/go.mod h1:WSZ59bidJOO40JSJmLqlkBJrjZCtjbKKkygEMfzY/kc=
