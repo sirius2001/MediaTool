@@ -1,7 +1,15 @@
 package main
 
-import "github.com/sirius2001/MediaTool/trans"
+import (
+	"flag"
+
+	"github.com/sirius2001/MediaTool/trans"
+)
 
 func main() {
-	trans.Mp4TransFlv("/home/sirius/Desktop/MediaTool/ocrean.mp4", "./test/test.flv")
+	path := flag.String("i", "", "mp4 Path")
+	flvPath := flag.String("o", "", "flv output path")
+	flag.Parse()
+
+	trans.Mp4TransFlv(*path, *flvPath)
 }

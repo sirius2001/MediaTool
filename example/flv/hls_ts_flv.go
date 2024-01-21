@@ -1,14 +1,20 @@
 package main
 
 import (
+	"flag"
+
 	"github.com/sirius2001/MediaTool/pkg"
 	"github.com/sirius2001/MediaTool/trans"
 )
 
 func main() {
-	tsArry, err := pkg.ParaseM3u8("/home/sirius/Desktop/MediaTool/example/hls_ts/playlist.m3u8")
+	path := flag.String("i", "", "hls m3u8 Path")
+	flvPath := flag.String("o", "", "flv output path")
+	flag.Parse()
+	
+	tsArry, err := pkg.ParaseM3u8(*path)
 	if err != nil {
 		panic(err)
 	}
-	trans.HlsTsTransFlv(tsArry,"./test/hls_flv.flv")
+	trans.HlsTsTransFlv(tsArry, *flvPath)
 }
