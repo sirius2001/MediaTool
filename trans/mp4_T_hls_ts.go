@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log/slog"
 	"os"
+	"path/filepath"
 
 	"github.com/grafov/m3u8"
 	"github.com/yapingcat/gomedia/go-mp4"
@@ -63,6 +64,7 @@ func Mp4TransTs(mp4Path string, tsPrefix string, durationMs uint64, name string)
 	}
 
 	tsPath = tsPrefix + fmt.Sprintf("%s_%d.ts", name, i)
+
 	tsFile, err = os.OpenFile(tsPath, os.O_CREATE|os.O_RDWR, os.ModePerm)
 	if err != nil {
 		slog.Error("OpenFile", "err", err)
@@ -73,6 +75,7 @@ func Mp4TransTs(mp4Path string, tsPrefix string, durationMs uint64, name string)
 
 		packet, err := demuxer.ReadPacket()
 		if err != nil {
+			tsPath, _ = filepath.Abs(tsPath)
 			ts = append(ts, &Ts{
 				Uri:        tsPath,
 				TsFile:     tsFile,
@@ -96,6 +99,7 @@ func Mp4TransTs(mp4Path string, tsPrefix string, durationMs uint64, name string)
 		if packet.Dts >= end {
 			i++
 			tsFile.Close()
+			tsPath, _ = filepath.Abs(tsPath)
 			ts = append(ts, &Ts{
 				Uri:        tsPath,
 				TsFile:     tsFile,
