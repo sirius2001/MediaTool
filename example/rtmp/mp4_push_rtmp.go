@@ -12,6 +12,7 @@ func main() {
 	loop := flag.Bool("loop", false, "loop to push")
 	flag.Parse()
 
-	puhser := pusher.NewMp4Puhser(*pullUrl, *pushUrl, *loop)
-	puhser.Start()
+	var pusher pusher.Mp4Pusher
+
+	pusher.Start(*pullUrl, *pushUrl, *loop)
 }
