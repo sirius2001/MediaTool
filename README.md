@@ -23,4 +23,8 @@ To install MediaTool, use the following command:
 ```shell
 go get -u github.com/sirius2001/mediatool
 
+##Example
+
+./mp4_push_rtmp -i test.mp4 -o rtmp://.....  
+
    
